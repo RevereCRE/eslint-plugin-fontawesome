@@ -21,28 +21,28 @@ ruleTester.run('shakeable-imports', rule, {
   valid: [
     {
       parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
-      code: `import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle';`,
+      code: `import { faCheckCircle } from '@fontawesome/free-solid-svg-icons/faCheckCircle';`,
     },
     {
       parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
-      code: `import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';`,
+      code: `import { faTimes } from '@fontawesome/free-solid-svg-icons/faTimes';`,
     },
     {
       parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
-      code: `import { faTimesCircle } from '@fortawesome/free-solid-svg-icons/faTimesCircle';`,
+      code: `import { faTimesCircle } from '@fontawesome/free-solid-svg-icons/faTimesCircle';`,
     },
   ],
 
   invalid: [
     {
       parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
-      code: `import { faCoffee } from '@fortawesome/free-solid-svg-icons';`,
+      code: `import { faCoffee } from '@fontawesome/free-solid-svg-icons';`,
       errors: [
         {
           messageId: 'badImport',
           suggestions: [
             {
-              output: `import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+              output: `import { faCoffee } from '@fontawesome/free-solid-svg-icons/faCoffee';`,
             },
           ],
         },
@@ -50,13 +50,13 @@ ruleTester.run('shakeable-imports', rule, {
     },
     {
       parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
-      code: `import { faCoffee, faTimes } from '@fortawesome/free-solid-svg-icons';`,
+      code: `import { faCoffee, faTimes } from '@fontawesome/free-solid-svg-icons';`,
       errors: [
         {
           messageId: 'badImport',
           suggestions: [
             {
-              output: `import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee';\nimport { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';`,
+              output: `import { faCoffee } from '@fontawesome/free-solid-svg-icons/faCoffee';\nimport { faTimes } from '@fontawesome/free-solid-svg-icons/faTimes';`,
             },
           ],
         },
@@ -64,13 +64,13 @@ ruleTester.run('shakeable-imports', rule, {
     },
     {
       parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
-      code: `import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons';`,
+      code: `import { faCoffee as coffeeIcon } from '@fontawesome/free-solid-svg-icons';`,
       errors: [
         {
           messageId: 'badImport',
           suggestions: [
             {
-              output: `import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+              output: `import { faCoffee as coffeeIcon } from '@fontawesome/free-solid-svg-icons/faCoffee';`,
             },
           ],
         },
@@ -78,13 +78,13 @@ ruleTester.run('shakeable-imports', rule, {
     },
     {
       parser: require.resolve('@typescript-eslint/parser'),
-      code: `import { faCoffee } from '@fortawesome/free-solid-svg-icons';`,
+      code: `import { faCoffee } from '@fontawesome/free-solid-svg-icons';`,
       errors: [
         {
           messageId: 'badImport',
           suggestions: [
             {
-              output: `import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+              output: `import { faCoffee } from '@fontawesome/free-solid-svg-icons/faCoffee';`,
             },
           ],
         },
@@ -92,13 +92,13 @@ ruleTester.run('shakeable-imports', rule, {
     },
     {
       parser: require.resolve('@typescript-eslint/parser'),
-      code: `import { faCoffee, faTimes } from '@fortawesome/free-solid-svg-icons';`,
+      code: `import { faCoffee, faTimes } from '@fontawesome/free-solid-svg-icons';`,
       errors: [
         {
           messageId: 'badImport',
           suggestions: [
             {
-              output: `import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee';\nimport { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';`,
+              output: `import { faCoffee } from '@fontawesome/free-solid-svg-icons/faCoffee';\nimport { faTimes } from '@fontawesome/free-solid-svg-icons/faTimes';`,
             },
           ],
         },
@@ -106,13 +106,13 @@ ruleTester.run('shakeable-imports', rule, {
     },
     {
       parser: require.resolve('@typescript-eslint/parser'),
-      code: `import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons';`,
+      code: `import { faCoffee as coffeeIcon } from '@fontawesome/free-solid-svg-icons';`,
       errors: [
         {
           messageId: 'badImport',
           suggestions: [
             {
-              output: `import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+              output: `import { faCoffee as coffeeIcon } from '@fontawesome/free-solid-svg-icons/faCoffee';`,
             },
           ],
         },
