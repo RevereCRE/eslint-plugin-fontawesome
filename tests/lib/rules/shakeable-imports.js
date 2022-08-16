@@ -80,6 +80,40 @@ ruleTester.run('shakeable-imports', rule, {
       ],
     },
     {
+      parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
+      code: `import { IconDefinition, faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons';`,
+      output: `import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+      errors: [
+        {
+          messageId: 'badImport',
+          suggestions: [
+            {
+              output: `import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      parserOptions: { ecmaVersion: 2022, sourceType: 'module' },
+      code: `import { IconDefinition as def, faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons';`,
+      output: `import { IconDefinition as def } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+      errors: [
+        {
+          messageId: 'badImport',
+          suggestions: [
+            {
+              output: `import { IconDefinition as def } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+            },
+          ],
+        },
+      ],
+    },
+    {
       parser: require.resolve('@typescript-eslint/parser'),
       code: `import { faCoffee } from '@fortawesome/free-solid-svg-icons';`,
       output: `import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
@@ -119,6 +153,40 @@ ruleTester.run('shakeable-imports', rule, {
           suggestions: [
             {
               output: `import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      parser: require.resolve('@typescript-eslint/parser'),
+      code: `import { IconDefinition, faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons';`,
+      output: `import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+      errors: [
+        {
+          messageId: 'badImport',
+          suggestions: [
+            {
+              output: `import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      parser: require.resolve('@typescript-eslint/parser'),
+      code: `import { IconDefinition as def, faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons';`,
+      output: `import type { IconDefinition as def } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
+      errors: [
+        {
+          messageId: 'badImport',
+          suggestions: [
+            {
+              output: `import type { IconDefinition as def } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee as coffeeIcon } from '@fortawesome/free-solid-svg-icons/faCoffee';`,
             },
           ],
         },
